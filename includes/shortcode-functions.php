@@ -519,7 +519,7 @@ if( !function_exists('symple_heading_shortcode') ) {
 		if ( $icon_left ) $output .= '<i class="symple-button-icon-left icon-'. $icon_left .'"></i>';
 			$output .= $title;
 		if ( $icon_right ) $output .= '<i class="symple-button-icon-right icon-'. $icon_right .'"></i>';
-		$output .= '</'.$type.'></span>';
+		$output .= '</span></'.$type.'>';
 		
 		return $output;
 	}
