@@ -1,4 +1,4 @@
-symple-shortcodes
+Symple Shortcodes WordPress Plugin
 =================
 
 A free shortcodes plugin for WordPress
