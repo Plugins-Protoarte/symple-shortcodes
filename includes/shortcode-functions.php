@@ -61,12 +61,12 @@ if( !function_exists('symple_callout_shortcode') ) {
 			'button_color'			=> 'blue',
 			'button_url'			=> 'http://www.wpexplorer.com',
 			'button_rel'			=> 'nofollow',
-			'button_target'			=> 'blank',
-			'button_border_radius'	=> '',
+			'button_target'		=> 'blank',
+			'button_border_radius'=> '',
 			'class'					=> '',
-			'icon_left'				=> '',
+			'icon_left'			=> '',
 			'icon_right'			=> '',
-			'visibility'			=> '',
+			'visibility'			=> 'all',
 		), $atts ) );
 		
 		$border_radius_style = ( $button_border_radius ) ? 'style="border-radius:'. $button_border_radius .'"' : NULL;
@@ -101,7 +101,7 @@ if( !function_exists('symple_skillbar_shortcode') ) {
 			'color'			=> '#6adcfa',
 			'class'			=> '',
 			'show_percent'	=> 'true',
-			'visibility'	=> '',
+			'visibility'	=> 'all',
 		), $atts ) );
 		
 		// Enque scripts
@@ -151,7 +151,7 @@ if( !function_exists('symple_social_shortcode') ) {
 			'title'				=> 'Follow Us',
 			'target'			=> 'self',
 			'rel'				=> '',
-			'border_radius'		=> '',
+			'border_radius'	=> '',
 			'class'				=> '',
 		), $atts ) );
 		$icons_url = plugin_dir_url( __FILE__ ) .'images/social/';
@@ -171,7 +171,7 @@ if ( !function_exists( 'symple_highlight_shortcode' ) ) {
 		extract( shortcode_atts( array(
 			'color'			=> 'yellow',
 			'class'			=> '',
-			'visibility'	=> '',
+			'visibility'	=> 'all',
 		  ),
 		  $atts ) );
 		  return '<span class="symple-highlight symple-highlight-'. $color .' '. $class .' symple-'. $visibility .'">' . do_shortcode( $content ) . '</span>';
@@ -193,11 +193,11 @@ if( !function_exists('symple_button_shortcode') ) {
 			'title'				=> 'Visit Site',
 			'target'			=> 'self',
 			'rel'				=> '',
-			'border_radius'		=> '',
+			'border_radius'	=> '',
 			'class'				=> '',
-			'icon_left'			=> '',
+			'icon_left'		=> '',
 			'icon_right'		=> '',
-			'visibility'		=> '',
+			'visibility'		=> 'all',
 		), $atts ) );
 		
 		
@@ -232,9 +232,9 @@ if( !function_exists('symple_box_shortcode') ) {
 			'text_align'		=> 'left',
 			'width'				=> '100%',
 			'margin_top'		=> '',
-			'margin_bottom'		=> '',
+			'margin_bottom'	=> '',
 			'class'				=> '',
-			'visibility'		=> '',
+			'visibility'		=> 'all',
 		  ), $atts ) );
 		  
 			$style_attr = '';
@@ -265,7 +265,7 @@ if( !function_exists('symple_testimonial_shortcode') ) {
 		extract( shortcode_atts( array(
 			'by'			=> '',
 			'class'			=> '',
-			'visibility'	=> '',
+			'visibility'	=> 'all',
 		  ), $atts ) );
 		$testimonial_content = '';
 		$testimonial_content .= '<div class="symple-testimonial '. $class .' symple-'. $visibility .'"><div class="symple-testimonial-content">';
@@ -290,7 +290,7 @@ if( !function_exists('symple_column_shortcode') ) {
 			'size'			=> 'one-third',
 			'position'		=>'first',
 			'class'			=> '',
-			'visibility'	=> '',
+			'visibility'	=> 'all',
 		  ), $atts ) );
 		  return '<div class="symple-column symple-' . $size . ' symple-column-'.$position.' '. $class .' symple-'. $visibility .'">' . do_shortcode($content) . '</div>';
 	}
@@ -308,7 +308,7 @@ if( !function_exists('symple_toggle_shortcode') ) {
 		extract( shortcode_atts( array(
 			'title'			=> 'Toggle Title',
 			'class'			=> '',
-			'visibility'	=>'',
+			'visibility'	=> 'all',
 		), $atts ) );
 		 
 		// Enque scripts
@@ -333,7 +333,7 @@ if( !function_exists('symple_accordion_main_shortcode') ) {
 		
 		extract( shortcode_atts( array(
 			'class'			=> '',
-			'visibility'	=>'',
+			'visibility'	=> 'all',
 		), $atts ) );
 		
 		// Enque scripts
@@ -402,7 +402,7 @@ if (!function_exists('symple_tab_shortcode')) {
 		$defaults = array(
 			'title'			=> 'Tab',
 			'class'			=> '',
-			'visibility'	=> '',
+			'visibility'	=> 'all',
 		);
 		extract( shortcode_atts( $defaults, $atts ) );
 		return '<div id="symple-tab-'. sanitize_title( $title ) .'" class="tab-content '. $class .' symple-'. $visibility .'">'. do_shortcode( $content ) .'</div>';
@@ -424,7 +424,7 @@ if( !function_exists('symple_pricing_table_shortcode') ) {
 	function symple_pricing_table_shortcode( $atts, $content = null  ) {
 		extract( shortcode_atts( array(
 			'class'			=> '',
-			'visibility'	=> '',
+			'visibility'	=> 'all',
 		), $atts ) );
 		return '<div class="symple-pricing-table '. $class .' symple-'. $visibility .'">' . do_shortcode($content) . '</div><div class="symple-clear-floats"></div>';
 	}
@@ -496,14 +496,14 @@ if( !function_exists('symple_heading_shortcode') ) {
 			'title'				=> __('Sample Heading', 'symple'),
 			'type'				=> 'h2',
 			'margin_top'		=> '',
-			'margin_bottom'		=> '',
+			'margin_bottom'	=> '',
 			'text_align'		=> '',
-			'font_size'			=> '',
+			'font_size'		=> '',
 			'color'				=> '',
 			'class'				=> '',
-			'icon_left'			=> '',
+			'icon_left'		=> '',
 			'icon_right'		=> '',
-			'visibility'		=> '',
+			'visibility'		=> 'all',
 		  ),
 		  $atts ) );
 		  
@@ -554,7 +554,7 @@ if (! function_exists( 'symple_shortcode_googlemaps' ) ) :
 				'zoom'			=> 8,
 				'align'			=> '',
 				'class'			=> '',
-				'visibility'	=> '',
+				'visibility'	=> 'all',
 		), $atts));
 		
 		// load scripts
@@ -585,9 +585,9 @@ if( !function_exists('symple_divider_shortcode') ) {
 		extract( shortcode_atts( array(
 			'style'				=> 'fadeout',
 			'margin_top'		=> '20px',
-			'margin_bottom'		=> '20px',
+			'margin_bottom'	=> '20px',
 			'class'				=> '',
-			'visibility'		=> '',
+			'visibility'		=> 'all',
 		  ),
 		  $atts ) );
 		$style_attr = '';
