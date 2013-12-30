@@ -50,7 +50,7 @@ if( !function_exists('symple_clear_floats_shortcode') ) {
 
 
 /*
- * Skillbars
+ * Callout
  * @since v1.4
  */
 if( !function_exists('symple_callout_shortcode') ) {
@@ -61,15 +61,16 @@ if( !function_exists('symple_callout_shortcode') ) {
 			'button_color'			=> 'blue',
 			'button_url'			=> 'http://www.wpexplorer.com',
 			'button_rel'			=> 'nofollow',
-			'button_target'			=> 'blank',
-			'button_border_radius'	=> '',
+			'button_target'		=> 'blank',
+			'button_border_radius'=> '',
 			'class'					=> '',
-			'icon_left'				=> '',
-			'icon_right'			=> ''
+			'icon_left'			=> '',
+			'icon_right'			=> '',
+			'visibility'			=> '',
 		), $atts ) );
 		
 		$border_radius_style = ( $button_border_radius ) ? 'style="border-radius:'. $button_border_radius .'"' : NULL;
-		$output = '<div class="symple-callout symple-clearfix '. $class .'">';
+		$output = '<div class="symple-callout symple-clearfix '. $class .' symple-'. $visibility .'">';
 		$output .= '<div class="symple-callout-caption">';
 			if ( $icon_left ) $output .= '<span class="symple-callout-icon-left icon-'. $icon_left .'"></span>';
 			$output .= do_shortcode ( $content );
@@ -95,18 +96,19 @@ if( !function_exists('symple_callout_shortcode') ) {
 if( !function_exists('symple_skillbar_shortcode') ) {
 	function symple_skillbar_shortcode( $atts  ) {		
 		extract( shortcode_atts( array(
-			'title'	=> '',
+			'title'			=> '',
 			'percentage'	=> '100',
-			'color'	=> '#6adcfa',
-			'class'	=> '',
-			'show_percent'	=> 'true'
+			'color'			=> '#6adcfa',
+			'class'			=> '',
+			'show_percent'	=> 'true',
+			'visibility'	=> '',
 		), $atts ) );
 		
 		// Enque scripts
 		wp_enqueue_script('symple_skillbar');
 		
 		// Display the accordion	';
-		$output = '<div class="symple-skillbar symple-clearfix '. $class .'" data-percent="'. $percentage .'%">';
+		$output = '<div class="symple-skillbar symple-clearfix '. $class .' symple-'. $visibility .'" data-percent="'. $percentage .'%">';
 			if ( $title !== '' ) $output .= '<div class="symple-skillbar-title" style="background: '. $color .';"><span>'. $title .'</span></div>';
 			$output .= '<div class="symple-skillbar-bar" style="background: '. $color .';"></div>';
 			if ( $show_percent == 'true' ) {
@@ -144,13 +146,13 @@ if( !function_exists('symple_spacing_shortcode') ) {
 if( !function_exists('symple_social_shortcode') ) {
 	function symple_social_shortcode( $atts ){   
 		extract( shortcode_atts( array(
-			'icon'			=> 'twitter',
-			'url'			=> 'http://www.twitter.com/sympleplorer',
-			'title'			=> 'Follow Us',
-			'target'		=> 'self',
-			'rel'			=> '',
+			'icon'				=> 'twitter',
+			'url'				=> 'http://www.twitter.com/sympleplorer',
+			'title'				=> 'Follow Us',
+			'target'			=> 'self',
+			'rel'				=> '',
 			'border_radius'	=> '',
-			'class'			=> '',
+			'class'				=> '',
 		), $atts ) );
 		$icons_url = plugin_dir_url( __FILE__ ) .'images/social/';
 		$icons_url = apply_filters( 'symple_social_icon_url', $icons_url );
@@ -167,11 +169,12 @@ if( !function_exists('symple_social_shortcode') ) {
 if ( !function_exists( 'symple_highlight_shortcode' ) ) {
 	function symple_highlight_shortcode( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-			'color'	=> 'yellow',
-			'class'	=> '',
+			'color'			=> 'yellow',
+			'class'			=> '',
+			'visibility'	=> '',
 		  ),
 		  $atts ) );
-		  return '<span class="symple-highlight symple-highlight-'. $color .' '. $class .'">' . do_shortcode( $content ) . '</span>';
+		  return '<span class="symple-highlight symple-highlight-'. $color .' '. $class .' symple-'. $visibility .'">' . do_shortcode( $content ) . '</span>';
 	
 	}
 	add_shortcode('symple_highlight', 'symple_highlight_shortcode');
@@ -185,15 +188,16 @@ if ( !function_exists( 'symple_highlight_shortcode' ) ) {
 if( !function_exists('symple_button_shortcode') ) {
 	function symple_button_shortcode( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-			'color'			=> 'blue',
-			'url'			=> 'http://www.sympleplorer.com',
-			'title'			=> 'Visit Site',
-			'target'		=> 'self',
-			'rel'			=> '',
+			'color'				=> 'blue',
+			'url'				=> 'http://www.sympleplorer.com',
+			'title'				=> 'Visit Site',
+			'target'			=> 'self',
+			'rel'				=> '',
 			'border_radius'	=> '',
-			'class'			=> '',
+			'class'				=> '',
 			'icon_left'		=> '',
-			'icon_right'	=> ''
+			'icon_right'		=> '',
+			'visibility'		=> '',
 		), $atts ) );
 		
 		
@@ -201,7 +205,7 @@ if( !function_exists('symple_button_shortcode') ) {
 		$rel = ( $rel ) ? 'rel="'.$rel.'"' : NULL;
 		
 		$button = NULL;
-		$button .= '<a href="' . $url . '" class="symple-button ' . $color . ' '. $class .'" target="_'.$target.'" title="'. $title .'" '. $border_radius_style .' '. $rel .'>';
+		$button .= '<a href="' . $url . '" class="symple-button ' . $color . ' '. $class .' symple-'. $visibility .'" target="_'.$target.'" title="'. $title .'" '. $border_radius_style .' '. $rel .'>';
 			$button .= '<span class="symple-button-inner" '.$border_radius_style.'>';
 				if ( $icon_left ) $button .= '<span class="symple-button-icon-left icon-'. $icon_left .'"></span>';
 				$button .= $content;
@@ -223,13 +227,14 @@ if( !function_exists('symple_button_shortcode') ) {
 if( !function_exists('symple_box_shortcode') ) { 
 	function symple_box_shortcode( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-			'color'			=> 'gray',
-			'float'			=> 'center',
-			'text_align'	=> 'left',
-			'width'			=> '100%',
-			'margin_top'	=> '',
+			'color'				=> 'gray',
+			'float'				=> 'center',
+			'text_align'		=> 'left',
+			'width'				=> '100%',
+			'margin_top'		=> '',
 			'margin_bottom'	=> '',
-			'class'			=> '',
+			'class'				=> '',
+			'visibility'		=> '',
 		  ), $atts ) );
 		  
 			$style_attr = '';
@@ -241,7 +246,7 @@ if( !function_exists('symple_box_shortcode') ) {
 			}
 		  
 		  $alert_content = '';
-		  $alert_content .= '<div class="symple-box ' . $color . ' '.$float.' '. $class .'" style="text-align:'. $text_align .'; width:'. $width .';'. $style_attr .'">';
+		  $alert_content .= '<div class="symple-box ' . $color . ' '.$float.' '. $class .' symple-'. $visibility .'" style="text-align:'. $text_align .'; width:'. $width .';'. $style_attr .'">';
 		  $alert_content .= ' '. do_shortcode($content) .'</div>';
 		  return $alert_content;
 	}
@@ -258,11 +263,12 @@ if( !function_exists('symple_box_shortcode') ) {
 if( !function_exists('symple_testimonial_shortcode') ) { 
 	function symple_testimonial_shortcode( $atts, $content = null  ) {
 		extract( shortcode_atts( array(
-			'by'	=> '',
-			'class'	=> '',
+			'by'			=> '',
+			'class'			=> '',
+			'visibility'	=> '',
 		  ), $atts ) );
 		$testimonial_content = '';
-		$testimonial_content .= '<div class="symple-testimonial '. $class .'"><div class="symple-testimonial-content">';
+		$testimonial_content .= '<div class="symple-testimonial '. $class .' symple-'. $visibility .'"><div class="symple-testimonial-content">';
 		$testimonial_content .= $content;
 		$testimonial_content .= '</div><div class="symple-testimonial-author">';
 		$testimonial_content .= $by .'</div></div>';	
@@ -281,11 +287,12 @@ if( !function_exists('symple_testimonial_shortcode') ) {
 if( !function_exists('symple_column_shortcode') ) {
 	function symple_column_shortcode( $atts, $content = null ){
 		extract( shortcode_atts( array(
-			'size'		=> 'one-third',
-			'position'	=>'first',
-			'class'		=> '',
+			'size'			=> 'one-third',
+			'position'		=>'first',
+			'class'			=> '',
+			'visibility'	=> '',
 		  ), $atts ) );
-		  return '<div class="symple-column symple-' . $size . ' symple-column-'.$position.' '. $class .'">' . do_shortcode($content) . '</div>';
+		  return '<div class="symple-column symple-' . $size . ' symple-column-'.$position.' '. $class .' symple-'. $visibility .'">' . do_shortcode($content) . '</div>';
 	}
 	add_shortcode('symple_column', 'symple_column_shortcode');
 }
@@ -299,15 +306,16 @@ if( !function_exists('symple_column_shortcode') ) {
 if( !function_exists('symple_toggle_shortcode') ) {
 	function symple_toggle_shortcode( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-			'title'	=> 'Toggle Title',
-			'class'	=> '',
+			'title'			=> 'Toggle Title',
+			'class'			=> '',
+			'visibility'	=>'',
 		), $atts ) );
 		 
 		// Enque scripts
 		wp_enqueue_script('symple_toggle');
 		
 		// Display the Toggle
-		return '<div class="symple-toggle '. $class .'"><h3 class="symple-toggle-trigger">'. $title .'</h3><div class="symple-toggle-container">' . do_shortcode($content) . '</div></div>';
+		return '<div class="symple-toggle '. $class .' symple-'. $visibility .'"><h3 class="symple-toggle-trigger">'. $title .'</h3><div class="symple-toggle-container">' . do_shortcode($content) . '</div></div>';
 	}
 	add_shortcode('symple_toggle', 'symple_toggle_shortcode');
 }
@@ -324,7 +332,8 @@ if( !function_exists('symple_accordion_main_shortcode') ) {
 	function symple_accordion_main_shortcode( $atts, $content = null  ) {
 		
 		extract( shortcode_atts( array(
-			'class'	=> ''
+			'class'			=> '',
+			'visibility'	=>'',
 		), $atts ) );
 		
 		// Enque scripts
@@ -332,7 +341,7 @@ if( !function_exists('symple_accordion_main_shortcode') ) {
 		wp_enqueue_script('symple_accordion');
 		
 		// Display the accordion	
-		return '<div class="symple-accordion '. $class .'">' . do_shortcode($content) . '</div>';
+		return '<div class="symple-accordion '. $class .' symple-'. $visibility .'">' . do_shortcode($content) . '</div>';
 	}
 	add_shortcode( 'symple_accordion', 'symple_accordion_main_shortcode' );
 }
@@ -391,11 +400,12 @@ if (!function_exists('symple_tabgroup_shortcode')) {
 if (!function_exists('symple_tab_shortcode')) {
 	function symple_tab_shortcode( $atts, $content = null ) {
 		$defaults = array(
-			'title'	=> 'Tab',
-			'class'	=> ''
+			'title'			=> 'Tab',
+			'class'			=> '',
+			'visibility'	=> '',
 		);
 		extract( shortcode_atts( $defaults, $atts ) );
-		return '<div id="symple-tab-'. sanitize_title( $title ) .'" class="tab-content '. $class .'">'. do_shortcode( $content ) .'</div>';
+		return '<div id="symple-tab-'. sanitize_title( $title ) .'" class="tab-content '. $class .' symple-'. $visibility .'">'. do_shortcode( $content ) .'</div>';
 	}
 	add_shortcode( 'symple_tab', 'symple_tab_shortcode' );
 }
@@ -413,9 +423,10 @@ if (!function_exists('symple_tab_shortcode')) {
 if( !function_exists('symple_pricing_table_shortcode') ) {
 	function symple_pricing_table_shortcode( $atts, $content = null  ) {
 		extract( shortcode_atts( array(
-			'class'	=> ''
+			'class'			=> '',
+			'visibility'	=> '',
 		), $atts ) );
-		return '<div class="symple-pricing-table '. $class .'">' . do_shortcode($content) . '</div><div class="symple-clear-floats"></div>';
+		return '<div class="symple-pricing-table '. $class .' symple-'. $visibility .'">' . do_shortcode($content) . '</div><div class="symple-clear-floats"></div>';
 	}
 	add_shortcode( 'symple_pricing_table', 'symple_pricing_table_shortcode' );
 }
@@ -482,16 +493,17 @@ if( !function_exists('symple_pricing_shortcode') ) {
 if( !function_exists('symple_heading_shortcode') ) {
 	function symple_heading_shortcode( $atts ) {
 		extract( shortcode_atts( array(
-			'title'			=> __('Sample Heading', 'symple'),
-			'type'			=> 'h2',
-			'margin_top'	=> '',
+			'title'				=> __('Sample Heading', 'symple'),
+			'type'				=> 'h2',
+			'margin_top'		=> '',
 			'margin_bottom'	=> '',
-			'text_align'	=> '',
+			'text_align'		=> '',
 			'font_size'		=> '',
-			'color'			=> '',
-			'class'			=> '',
+			'color'				=> '',
+			'class'				=> '',
 			'icon_left'		=> '',
-			'icon_right'	=> ''
+			'icon_right'		=> '',
+			'visibility'		=> '',
 		  ),
 		  $atts ) );
 		  
@@ -515,7 +527,7 @@ if( !function_exists('symple_heading_shortcode') ) {
 			$text_align = 'text-align-left';
 		}
 		
-	 	$output = '<'.$type.' class="symple-heading '. $text_align .' '. $class .'" style="'.$style_attr.'"><span>';
+	 	$output = '<'.$type.' class="symple-heading '. $text_align .' '. $class .' symple-'. $visibility .'" style="'.$style_attr.'"><span>';
 		if ( $icon_left ) $output .= '<i class="symple-button-icon-left icon-'. $icon_left .'"></i>';
 			$output .= $title;
 		if ( $icon_right ) $output .= '<i class="symple-button-icon-right icon-'. $icon_right .'"></i>';
@@ -535,13 +547,14 @@ if (! function_exists( 'symple_shortcode_googlemaps' ) ) :
 	function symple_shortcode_googlemaps($atts, $content = null) {
 		
 		extract(shortcode_atts(array(
-				'title'		=> '',
-				'location'	=> '',
-				'width'		=> '',
-				'height'	=> '300',
-				'zoom'		=> 8,
-				'align'		=> '',
-				'class'		=> '',
+				'title'			=> '',
+				'location'		=> '',
+				'width'			=> '',
+				'height'		=> '300',
+				'zoom'			=> 8,
+				'align'			=> '',
+				'class'			=> '',
+				'visibility'	=> '',
 		), $atts));
 		
 		// load scripts
@@ -549,7 +562,7 @@ if (! function_exists( 'symple_shortcode_googlemaps' ) ) :
 		wp_enqueue_script('symple_googlemap_api');
 		
 		
-		$output = '<div id="map_canvas_'.rand(1, 100).'" class="googlemap '. $class .'" style="height:'.$height.'px;width:100%">';
+		$output = '<div id="map_canvas_'.rand(1, 100).'" class="googlemap '. $class .' symple-'. $visibility .'" style="height:'.$height.'px;width:100%">';
 			$output .= (!empty($title)) ? '<input class="title" type="hidden" value="'.$title.'" />' : '';
 			$output .= '<input class="location" type="hidden" value="'.$location.'" />';
 			$output .= '<input class="zoom" type="hidden" value="'.$zoom.'" />';
@@ -570,10 +583,11 @@ endif;
 if( !function_exists('symple_divider_shortcode') ) {
 	function symple_divider_shortcode( $atts ) {
 		extract( shortcode_atts( array(
-			'style'			=> 'fadeout',
-			'margin_top'	=> '20px',
+			'style'				=> 'fadeout',
+			'margin_top'		=> '20px',
 			'margin_bottom'	=> '20px',
-			'class'			=> '',
+			'class'				=> '',
+			'visibility'		=> '',
 		  ),
 		  $atts ) );
 		$style_attr = '';
@@ -586,7 +600,7 @@ if( !function_exists('symple_divider_shortcode') ) {
 		} else {
 			$style_attr = NULL;
 		}
-	 return '<hr class="symple-divider '. $style .' '. $class .'" '.$style_attr.' />';
+	 return '<hr class="symple-divider '. $style .' '. $class .' symple-'. $visibility .'" '.$style_attr.' />';
 	}
 	add_shortcode( 'symple_divider', 'symple_divider_shortcode' );
 }
