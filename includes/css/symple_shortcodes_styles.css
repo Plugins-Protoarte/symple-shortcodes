@@ -235,7 +235,7 @@
 	.symple-visible-desktop { display: none }
 	.symple-hidden-tablet { display: none }
 }
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
 	.symple-hidden-desktop { display: block }
 	.symple-visible-desktop { display: none }
 	.symple-hidden-phone { display: none }
