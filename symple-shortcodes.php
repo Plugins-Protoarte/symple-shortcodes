@@ -5,7 +5,7 @@ Plugin URI: http://www.wpexplorer.com/symple-shortcodes
 Description: A free shortcodes plugin
 Author: AJ Clarke
 Author URI: http://www.wpexplorer.com
-Version: 1.5
+Version: 1.51
 License: GNU General Public License version 2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
