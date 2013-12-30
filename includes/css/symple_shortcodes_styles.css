@@ -221,3 +221,22 @@
 	.symple-callout-caption { float: none; font-size: 1.6em; font-weight: 400; width: 100%; color: #555; }
 	.symple-callout-button { position: inherit; right: auto; top: auto; margin: 20px auto 0; text-align: center; }
 }
+/*Visibility
+================================================== */
+.symple-hidden-desktop,
+.symple-visible-phone,
+.symple-visible-tablet { display: none }
+@media only screen and (max-width: 959px) {
+	.symple-hidden-desktop { display: block }
+	.symple-visible-desktop { display: none }
+}
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	.symple-hidden-desktop { display: block }
+	.symple-visible-desktop { display: none }
+	.symple-hidden-tablet { display: none }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.symple-hidden-desktop { display: block }
+	.symple-visible-desktop { display: none }
+	.symple-hidden-phone { display: none }
+}
