@@ -1,7 +1,7 @@
 Symple Shortcodes WordPress Plugin
 =================
 
-A free shortcodes plugin for WordPress
+A free shortcodes plugin for WordPress: http://www.wpexplorer.com/symple-shortcodes/
 
 Don't forget to check out the parameters on the wiki page:
 
